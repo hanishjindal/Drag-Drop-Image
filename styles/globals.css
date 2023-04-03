@@ -113,6 +113,10 @@ h1{
   margin-top: 5rem; */
 }
 
+.uploadBox{
+  width: 80vw;
+}
+
 /* .uploadBox{
   background-color: #3f3f3f;
   width: 600px;
