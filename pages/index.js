@@ -11,7 +11,7 @@ export default function Home() {
   const [showUpload, setShowUpload] = useState(true);
   const [preview, setPreview] = useState();
   const [gif, setGif] = useState(true);
-  const [link, setLink] = useState("car.jpeg");
+  const [link, setLink] = useState("/car.jpeg");
 
   const handelSubmit = () => {
     if (!selectedFile) {

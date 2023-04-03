@@ -1,8 +1,8 @@
 import React from "react";
-// import FileUploaded from "../components/FileUploader";
 import Loader from "./Loader";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import Image from "next/image";
 
 function UploadBox({
   selectedFile,
@@ -12,9 +12,12 @@ function UploadBox({
   preview,
   gif,
 }) {
-  const onDrop = useCallback((acceptedFiles) => {
-    setSelectedFile(acceptedFiles[0]);
-  }, []);
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      setSelectedFile(acceptedFiles[0]);
+    },
+    [setSelectedFile]
+  );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (
@@ -26,9 +29,12 @@ function UploadBox({
     >
       {/* <input {...getInputProps()} /> */}
       {selectedFile && preview && gif && (
-        <img
-          className="preview mb-7 rounded-3xl m-1 w-[350px] h-[230px] absolute"
+        <Image
+          className="preview mb-7 rounded-3xl m-1 w-[380px] h-[230px] absolute"
           src={preview}
+          alt=""
+          width={350}
+          height={230}
         />
       )}
       {showUpload ? (
@@ -48,10 +54,12 @@ function UploadBox({
           {gif ? (
             <Loader />
           ) : (
-            <img
-              className="rounded-3xl mb-1 w-[650px] h-[355px]"
+            <Image
+              className="preview rounded-3xl h-[350px]"
               src={link}
               alt=""
+              width={800}
+              height={250}
             />
           )}
         </div>
